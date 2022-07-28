@@ -1,0 +1,8 @@
+{
+  "defaultPort": 5000,
+  "databaseFile": "database.json",
+  "accessTokenSecret": "accessToken",
+  "accessTokenExpiresInMinutes": "15",
+  "refreshTokenSecret": "refreshToken",
+  "refreshTokenExpiresInMinutes": "10080"
+}
