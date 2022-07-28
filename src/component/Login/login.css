@@ -1,0 +1,9 @@
+.login_container .card-title {
+    text-align: center;
+    font-size: 28px;
+}
+.left-content{
+    background-image:url( '../../public/assets/images/images.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
