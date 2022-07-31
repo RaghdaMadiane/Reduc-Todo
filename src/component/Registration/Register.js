@@ -8,31 +8,33 @@ import './register.css'
 function BasicExample() {
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
+  const [errorms,setErrorms]=useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, watch, handleSubmit, setError, formState: { errors } } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (data) => { 
     dispatch(registeration(data))
       .unwrap()
       .then(() => {
-        // props.history.push("/profile");
+       
         setSuccessful(true);
         navigate('/Login')
         alert("done")
       })
-      .catch(() => {
-        alert("error")
+      .catch((error) => {
+
+       
         setSuccessful(false);
+        alert(error)
+        setErrorms(error)
+        return error;
       });
   }
   return (
     <Container className='register_container mt-4 w-50'>
       <div className="card mb-3" >
         <div className="row g-0">
-          {/* <div className="col-md-6">
-            <img src="..." className="img-fluid rounded-start" alt="..." />
-          </div> */}
+       
           <div className="col-md-12">
             <div className="card-body">
               <h5 className="card-title">Sign Up </h5>
@@ -107,12 +109,15 @@ function BasicExample() {
 
 
                 </div>
-
+                {errorms && (<Form.Text className="text-danger">
+                      <p>{errorms}</p>
+                    </Form.Text>)}
                 <div className="d-flex justify-content-center">
                 <Button variant="outline-success" type="submit">
 
                  Sign Up
                 </Button>
+                
                 </div>
               </Form>
             </div>

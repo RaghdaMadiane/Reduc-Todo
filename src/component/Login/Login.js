@@ -4,13 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import './login.css'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from "../../redux/userSlice";
 function BasicExample() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
+  const [errorms,setErrorms]=useState("");
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { register, watch, handleSubmit, setError, formState: { errors } } = useForm();
@@ -22,14 +22,19 @@ function BasicExample() {
       .then(() => {
         // window.location.reload();
       })
-      .catch(() => {
+      .catch((error) => {
         setLoading(false);
+        setErrorms(error)
       });
 
   }
-  if (isLoggedIn) {
-    return navigate('/')
-  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+        return navigate('/')
+      }
+  })
+
   return (
     <Container className='login_container mt-4 w-50'>
       <div className="card mb-3" >
@@ -79,7 +84,9 @@ function BasicExample() {
                   </Link>
                 </Form.Text>
 
-
+                {errorms && (<Form.Text className="text-danger">
+                      <p>{errorms}</p>
+                    </Form.Text>)}
                 <Button variant="outline-primary" type="submit">
                   {loading && (
                     <span className="spinner-border spinner-border-sm"></span>

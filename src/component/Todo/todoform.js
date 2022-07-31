@@ -1,16 +1,22 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom';
-import { addTask } from '../../redux/taskSlice'
+import { addTask } from '../../redux/taskSlice';
+import { getAll } from '../../redux/taskSlice'
 import {  useNavigate } from 'react-router-dom';
+import { request } from '../../IndexDB/indexedDB';
+
 function Todoform() {
+   
     const [input, setInput] = useState("");
     const { user: currentUser } = useSelector((state) => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch()
+   
     const formAdd = (e) => {
         e.preventDefault();
+
         if (currentUser) {
             if(input.length > 1){
            dispatch(addTask(input));
@@ -19,7 +25,9 @@ function Todoform() {
             navigate('/login')
         }
 
+
     }
+   
     return (
         <div className='d-flex justify-content-center text-center' >
             <div className='w-50  '>

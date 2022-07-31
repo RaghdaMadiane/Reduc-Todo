@@ -9,14 +9,9 @@ export const registeration = createAsyncThunk(
       
       return response.data;
     } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-        
-      return thunkAPI.rejectWithValue();
+     
+       const errormessage=error.response.data
+      return thunkAPI.rejectWithValue(errormessage.message);
     }
   }
 );
@@ -28,14 +23,9 @@ export const login = createAsyncThunk(
       
       return { user: data };
     } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
      
-      return thunkAPI.rejectWithValue();
+        const errormessage=error.response.data
+      return thunkAPI.rejectWithValue(errormessage.message);
     }
   }
 );
