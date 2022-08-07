@@ -19,6 +19,7 @@ function Header() {
             {currentUser? (
             <>
               <Nav.Link as={Link}  to='/'>Home</Nav.Link>
+             <Nav.Link as={Link}  to='/shop'>Shop</Nav.Link>
               <NavDropdown title={currentUser.username}id="basic-nav-dropdown">
               <NavDropdown.Item as={Link}  to='/Login' onClick={logOut}>Logout</NavDropdown.Item>
             </NavDropdown>
