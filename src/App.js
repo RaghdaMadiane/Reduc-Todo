@@ -6,7 +6,7 @@ import Header from './component/Header/Header';
 import Todo from './component/Todo/toDo';
 import Login from './component/Login/Login'
 import Register from './component/Registration/Register'
-
+import {ProtectedRoute} from './protectedRoute/protected'
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
       <BrowserRouter>
       <Header/>
       <Routes>
-     
+      <Route exact path='/' element={<ProtectedRoute/>}>
         <Route path="/" element={<Todo/>}></Route>
-       
+        </Route>
         <Route path="/Login" element={<Login/>}></Route>
         <Route path="/Register" element={<Register/>}></Route>
       </Routes>

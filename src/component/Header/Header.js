@@ -15,7 +15,7 @@ function Header() {
         <Navbar.Brand as={Link}  to='/'>TODO</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav " className='justify-content-end'>
-          <Nav >
+          <Nav > 
             {currentUser? (
             <>
               <Nav.Link as={Link}  to='/'>Home</Nav.Link>
@@ -26,7 +26,6 @@ function Header() {
           ):(
             <>
             <Nav.Link as={Link} to='/Login'>login</Nav.Link>
-             {/* <Nav.Link as={Link} to='/Register'>Register</Nav.Link>  */}
              </>
           )}
           </Nav>

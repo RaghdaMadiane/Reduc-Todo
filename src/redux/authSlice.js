@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import {registeration,login,logout} from './userSlice'
+import { registeration, login, logout } from './userSlice'
 const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = user
